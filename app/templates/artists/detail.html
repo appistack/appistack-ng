@@ -1,0 +1,38 @@
+<div id="artist-{{artist.id}}" class="row">
+  <div class="col-sm-4 col-xs-12">
+    <div class="thumbnail text-center">
+      <h2>
+        &nbsp;{{ artist.first_name }}&nbsp;{{ artist.last_name }}
+      </h2>
+
+      <img src="{{ artist.headshot }}" width="200">
+
+      <div class="caption">
+        <p>{{artist.description}}</p>
+      </div>
+    </div>
+
+    <canvas id="spectrogram-canvas" class="spectrogram-canvas" width="100%" height="256"></canvas>
+    <audio id="spectrogram-audio"></audio>
+
+    <div class="thumbnail text-center">
+      <div ui-view class="caption">
+        <p class="muted">Click on a soundbyte to impersonate it.</p>
+      </div>
+
+      <h3 ng-show="state == 'scored'">Score: {{ sampleScore | number:1}}</h3>
+    </div>
+  </div>
+
+  <div class="col-sm-8 col-xs-12">
+    <h2>Artist Sounds</h2>
+    <div ng-repeat="sound in artist.sounds">
+      <p>
+        <button class="btn btn-primary" ui-sref="artists.detail.sound({soundId: {{sound.id}} })" ng-disabled="!sound.audiofile">
+          <i class="fa fa-play fa-fw fa-lg"></i>
+        </button>
+        &nbsp;{{sound.name}}
+      </p>
+    </div>
+  </div>
+</div>

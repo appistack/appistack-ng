@@ -1,0 +1,17 @@
+<div id="artist-{{artist.id}}" class="row">
+    <div class="col-sm-4 col-xs-12">
+        <div class="thumbnail text-center">
+            <h2>
+                &nbsp;{{ artist.first_name }}&nbsp;{{ artist.last_name }}
+            </h2>
+
+            <a href="/#/artists/{{artist.id}}">
+                <img src="{{ artist.headshot }}" width="200">
+            </a>
+
+            <div class="caption">
+                <p>{{artist.description}}</p>
+            </div>
+        </div>
+    </div>
+</div>

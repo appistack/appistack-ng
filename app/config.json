@@ -1,0 +1,37 @@
+{
+  "common": {
+    "api_url": "localhost:3000",
+    "api_protocol": "http",
+    "assets_url": "//localhost:8000/",
+    "app_js": "js/app.js",
+    "app_css": "css/app.css",
+    "app_components": "components/build.html",
+    "build_folder": "dist",
+    "ng_mocks": false
+  },
+  "development": {
+    "ng_mocks": false
+  },
+  "divshot": {
+    "assets_url": "//development.voxxel.divshot.io/",
+    "ng_mocks": false,
+    "build_folder": "divshot"
+  },
+  "staging": {
+    "googleAnalytics": {
+      "trackingId": "1234",
+      "domainName": "staging.five678.com"
+    }
+  },
+  "production": {
+    "ng_mocks": false,
+    "api_protocol": "https",
+    "api_url": "voxxel.herokuapp.com",
+    "assets_url": "//vox.xel.io/",
+    "build_folder": "divshot",
+    "googleAnalytics": {
+      "trackingId": "UA-61809088-1",
+      "domainName": "auto"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+<div class="col-sm-8 col-xs-12">
+  <div class="panel panel-default">
+    <div class="panel-heading">Sounds</div>
+    <div class="panel-body">
+      <accordian close-others=1 id="artist-{{artist.id}}-sounds">
+        <accordion-group ng-repeat="sound in artist.sounds | limitTo:3">
+          <!--<artist-sound-listing sound="sound"/>-->
+        </accordian-group>
+      </accordian>
+    </div>
+  </div>
+</div>

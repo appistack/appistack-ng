@@ -1,0 +1,9 @@
+<div id="user-{{user.id}}">
+  <h3>{{ user.username }}</h3>
+  <user-profile-pic user="user"></user-profile-pic>
+  <p>
+    <span ng-if="isAdmin">
+      <span class="label label-primary"><i class="fa fa-user fa-fw"></i>&nbsp;Admin</span>
+    </span>
+  </p>
+</div>

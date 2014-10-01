@@ -2,4 +2,7 @@
 /vendor/bower
 
 /dist
+/divshot
+/.divshot-cache
+/temp
 /generated

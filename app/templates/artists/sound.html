@@ -1,0 +1,21 @@
+<h3>{{sound.name }}</h3>
+<p>{{ sound.description }}</p>
+
+<div class="btn-group">
+  <button class="btn btn-primary" ng-click="play(sound)" ng-disabled="!playEnabled">
+    <i class="fa fa-play fa-fw fa-lg"></i><span class="hidden-sm">&nbsp;Play</span>
+  </button>
+
+  <button class="btn btn-primary" ng-click="record()" ng-disabled="!recordEnabled">
+    <i class="fa fa-microphone fa-fw fa-lg"></i><span class="hidden-sm">&nbsp;Record</span>
+  </button>
+
+  <button class="btn btn-primary" ng-click="score()" ng-disabled="!scoreEnabled">
+    Score
+  </button>
+
+  <button class="btn btn-primary" ng-click="submit()" ng-disabled="!submitEnabled">
+    Share
+  </button>
+</div>
+
