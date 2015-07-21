@@ -85,6 +85,20 @@ angular.module('app',
             }
           })
 
+          .state('users-profile-edit', {
+            url: '/users/{userId:int}',
+            templateUrl: 'users/edit.html',
+            controller: function ($scope, user) {
+              $scope.user = user;
+            },
+            resolve: {
+              auth: authRoute,
+              user: function($stateParams, Users) {
+                return Users.one($stateParams.userId).get();
+              }
+            }
+          })
+
           .state('sounds.detail', {
             url: "/sounds/{soundId:int}",
             templateUrl: "sounds/detail.html",
