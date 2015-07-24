@@ -1,4 +1,4 @@
-<button type="button" class="btn navbar-btn btn-default" id="user-profile-button">
+<button ui-sref="users-profile-edit({userId: user.id})" type="button" class="btn navbar-btn btn-default" id="user-profile-button">
   <i class="fa fa-rocket fa-lg"></i>&nbsp;{{ user.email }}
 </button>
 <button ng-click="signOut()" type="button" class="btn navbar-btn btn-default" id="user-profile-logout">
