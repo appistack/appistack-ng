@@ -86,10 +86,13 @@ angular.module('app',
           })
 
           .state('users-profile-edit', {
-            url: '/users/{userId:int}',
+            url: '/users/{userId:int}/edit',
             templateUrl: 'users/edit.html',
             controller: function ($scope, user) {
               $scope.user = user;
+              $scope.submit = function() {
+                $scope.user.save();
+              };
             },
             resolve: {
               auth: authRoute,
