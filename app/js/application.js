@@ -174,6 +174,10 @@ angular.module('app',
 
     .config(function(RestangularProvider, ENV) {
       RestangularProvider.setBaseUrl(ENV.apiUrl);
+      RestangularProvider.setDefaultHeaders({
+        'Content-Type': 'application/json;charset=UTF-8',
+        'Accept': 'application/json,text/plain;version=1'
+      })
     })
 
     .config(function($authProvider, ENV) {
