@@ -11,7 +11,6 @@ angular.module('app')
           }
           return elem;
         });
-        RestangularConf.setRequestSuffix('.json');
       });
     })
 
