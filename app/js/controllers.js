@@ -17,7 +17,6 @@ angular.module('app')
     $scope.signupAlerts = [];
 
     $scope.openSignupModal = function () {
-
       var modalInstance = $modal.open({
         templateUrl: 'modals/signup-modal.html',
         controller: 'SignupModalCtrl',
@@ -138,11 +137,6 @@ angular.module('app')
   //TODO: One-Time Microphone Service
   //TODO: SpectroUI state machine factory?
 
-  // update states to:
-  // render: function (drawContext) { }
-  // rendered: false
-  // ???
-
   .controller("SpectroCtrl", function ($scope, $q, artist, audio, mic, SpectralOpts, SpectrogramAnimations, SpectrogramSimilarity) {
     $scope.artist = artist;
 
@@ -158,20 +152,27 @@ angular.module('app')
 
     // need these on scope, so i can switch to factory later,
     //   but still share values to sub-controllers
+
     audio.audio = audioTag;
     audio.initAudioGraph(audioContext);
 
-    mic.initMic(audioContext, function (stream) {
-      var defer = $q.defer();
-      defer.promise
-        .then(function () {
-          mic.initMicGraph(stream);
-        }).then(function () {
-          animate();
-        });
+    setTimeout(function() {
+      //in Chrome v43 only, i'm getting a MEDIA_DEVICE_FAILED_DUE_TO_SHUTDOWN
+      // thrown when rendering after user clicks pushstate link
+      // ideally, this getUserMedia request should only be executed once per visit.
 
-      defer.resolve();
-    });
+      mic.initMic(audioContext, function (stream) {
+        var defer = $q.defer();
+        defer.promise
+          .then(function () {
+            mic.initMicGraph(stream);
+          }).then(function () {
+            animate();
+          });
+
+        defer.resolve();
+      });
+    }, 250);
 
     var countdownStart;
     var recordStarttime, recordEndtime;
