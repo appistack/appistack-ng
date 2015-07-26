@@ -308,6 +308,7 @@ gulp.task('webserver', function () {
   gulp.src('dist')
       .pipe(webserver({
         //livereload: true,
+        fallback: 'index.html',
         port: 8000,
         open: true
       }));
