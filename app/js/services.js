@@ -1,6 +1,7 @@
 angular.module('app')
     .factory('RestDefaults', function(Restangular) {
       return Restangular.withConfig(function(RestangularConf) {
+        // This request interceptor ensures that POST/PUT requests are sent in the format that rails expects.
         RestangularConf.addRequestInterceptor(function(elem, operation, path, url) {
           if (operation === 'post' || operation == 'put') {
             var requestElem = {};
