@@ -1,6 +1,15 @@
 angular.module('app')
     .factory('RestDefaults', function(Restangular) {
       return Restangular.withConfig(function(RestangularConf) {
+        RestangularConf.addRequestInterceptor(function(elem, operation, path, url) {
+          if (operation === 'post' || operation == 'put') {
+            var requestElem = {};
+            var modelName = path.substring(0, path.length - 1);
+            requestElem[modelName] = elem;
+            return requestElem;
+          }
+          return elem;
+        });
         RestangularConf.setRequestSuffix('.json');
       });
     })
