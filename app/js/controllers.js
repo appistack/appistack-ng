@@ -16,6 +16,10 @@ angular.module('app')
     $scope.signup = {username: '', email: '', password: '', passwordConfirmation: ''};
     $scope.signupAlerts = [];
 
+    $rootScope.$on('navbar:openLoginModal', function(ev) {
+      $scope.openLoginModal();
+    });
+
     $scope.openSignupModal = function () {
       var modalInstance = $modal.open({
         templateUrl: 'modals/signup-modal.html',

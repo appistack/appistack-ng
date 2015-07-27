@@ -15,14 +15,14 @@ angular.module('app',
 
       // NOTE: If you're going to use html5 pushstate, you'll need to configure your webserver(s) to route to index.html, except for static assets
       $locationProvider.html5Mode(true);
-
       $urlRouterProvider.otherwise('/home');
 
-      function authRoute($auth, $state) {
+      function authRoute($auth, $state, $rootScope) {
         return $auth.validateUser()
           .catch(function(res) {
             //TODO: also open the login modal
             $state.go('home');
+            $rootScope.$emit('navbar:openLoginModal');
           });
       }
 
