@@ -18,8 +18,12 @@ angular.module('app',
 
       $urlRouterProvider.otherwise('/home');
 
-      function authRoute($auth) {
-        return $auth.validateUser();
+      function authRoute($auth, $state) {
+        return $auth.validateUser()
+          .catch(function(res) {
+            //TODO: also open the login modal
+            $state.go('home');
+          });
       }
 
       $stateProvider
@@ -34,8 +38,6 @@ angular.module('app',
             templateUrl: "error.html",
             controller: 'HomeCtrl'
           })
-
-          //TODO: redirect unauthenticated routes to the home state, then open the login modal
 
           .state('users', {
             url: "/users",
