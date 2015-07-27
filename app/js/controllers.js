@@ -438,6 +438,7 @@ angular.module('app')
   })
 
   .controller("SpectroSoundsCtrl", function ($scope, sound, audio, mic) {
+    //TODO: disable play button until the resolve's sound.get() completes
     if ($scope.state != 'initCanvas') { $scope.state = 'loaded'; }
     audio.loaded = false;
 
