@@ -70,10 +70,12 @@ angular.module('app',
           .state('users-profile-edit', {
             url: '/users/{userId:int}/edit',
             templateUrl: 'users/edit.html',
-            controller: function ($scope, user) {
+            controller: function ($scope, $state, user) {
               $scope.user = user;
               $scope.submit = function() {
-                $scope.user.save();
+                $scope.user.save().then(function(res) {
+                  $state.go('users-profile', {userId: $scope.user.id});
+                });
               };
             },
             resolve: {
