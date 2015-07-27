@@ -5,7 +5,7 @@
                 &nbsp;{{ artist.first_name }}&nbsp;{{ artist.last_name }}
             </h2>
 
-            <a href="/#/artists/{{artist.id}}">
+            <a ui-sref="artists.detail({artistId: artist.id})">
                 <img src="{{ artist.headshot }}" width="200">
             </a>
 
