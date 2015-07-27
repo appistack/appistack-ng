@@ -13,19 +13,8 @@ angular.module('app',
 
     .config(function ($stateProvider, $locationProvider, $urlRouterProvider, gravatarServiceProvider) {
 
-      // states: unauthenticated
-      // home - / - prompt to signup
-      // features - /features - overview of product
-      // explore - /explore - top patches and trending vsts
-      // blog - /blog - blog posts
-
-      // states: authenticated
-      // home - / - dashboard
-      // profile - /:username
-      // account - /account
-
-      // TODO: enable pushstate (fix heroku lineman build pack)
-      // $locationProvider.html5Mode(true);
+      // NOTE: If you're going to use html5 pushstate, you'll need to configure your webserver(s) to route to index.html, except for static assets
+      $locationProvider.html5Mode(true);
 
       $urlRouterProvider.otherwise('/home');
 
@@ -47,15 +36,6 @@ angular.module('app',
           })
 
           //TODO: redirect unauthenticated routes to the home state, then open the login modal
-
-          // authenticated routes
-          // TODO: /followers
-          // TODO: /following
-          // TODO: /top/sounds
-          // TODO: /top/users
-          // TODO: /users/:id
-          // TODO: /artists/:id/sounds
-          // TODO: /artists/:id/bytes
 
           .state('users', {
             url: "/users",
@@ -156,9 +136,7 @@ angular.module('app',
               sound: function ($stateParams, Sounds) { return Sounds.one($stateParams.soundId).get(); }
             },
             controller: 'SpectroSoundsCtrl'
-          })
-      
-          ;
+          });
 
       gravatarServiceProvider.defaults = {
         size: 100,
