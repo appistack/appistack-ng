@@ -1,5 +1,5 @@
 angular.module('app.auth', [])
-    .run(function ($rootScope) {
+    .run(function ($rootScope, $state) {
       $rootScope.user = $rootScope.user || {};
       $rootScope.loggedIn = $rootScope.loggedIn || false;
 
@@ -19,6 +19,7 @@ angular.module('app.auth', [])
 
       function logoutSuccess (ev) {
         setLoggedOut();
+        $state.go('home');
       }
 
       function logoutError (ev, reason) {

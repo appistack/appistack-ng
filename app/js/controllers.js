@@ -43,7 +43,6 @@ angular.module('app')
             $scope.signupAlerts = [];
           })
           .catch(function (res) {
-            console.log(res);
             if (res.status == 401 || res.status == 403) {
               $scope.signupAlerts = function () {
                 if (Array.isArray(res.data.errors)) {
