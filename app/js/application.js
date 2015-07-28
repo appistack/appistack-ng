@@ -1,6 +1,5 @@
 angular.module('app',
-    ['ngRoute',
-      'ipCookie',
+    ['ipCookie',
       'ngResource',
       'restangular',
       'ui.bootstrap',
