@@ -49,7 +49,10 @@ angular.module('app',
           .state('password-change', {
             url: "/password/change",
             templateUrl: "auth/password-change.html",
-            controller: 'PasswordChangeCtrl'
+            controller: 'PasswordChangeCtrl',
+            resolve: {
+              auth: authRoute
+            }
           })
 
           .state('users', {
