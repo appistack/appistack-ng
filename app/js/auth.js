@@ -31,6 +31,16 @@ angular.module('app.auth', [])
           });
         })
         .catch(function(res) {
+          if (res.status == 401) {
+            //A 401 on DeviseTokenAuth password reset indicates a user was trying to change the password for another user
+            $scope.updatePasswordAlerts = [{type: "error", msg: "Couldn't update password."}]
+          }
+          if (res.status == 422) {
+            $scope.updatePasswordAlerts = _.map(res.data.errors.full_messages, function(msg) {
+              return {type: "error", msg: msg};
+            });
+          }
+
           messageModal.open({
             title: 'Voxxel Password Update Error',
             icon: 'fa-lock',
