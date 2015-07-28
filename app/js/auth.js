@@ -1,7 +1,7 @@
 angular.module('app.auth', [])
   .controller('PasswordResetCtrl', function($scope, $auth, messageModal) {
       $scope.onRequestPasswordReset = function() {
-        $auth.requestPasswordReset($scope.passwordResetForm)
+        $auth.requestPasswordReset($scope.resetPasswordForm)
           .then(function(res) {
             messageModal.open({
               title: 'Voxxel Password Reset Sent',
