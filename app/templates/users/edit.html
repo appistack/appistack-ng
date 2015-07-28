@@ -8,15 +8,20 @@
     </span>
   </p>
 
-  <form id="user-edit-form" ng-submit="submit()" role="form">
-    <div class="form-group">
-      <label for="userName">Name</label>
-      <input type="text" id="userName" name="name" placeholder="Name" ng-model="user.name" required="required" class="form-control"/>
+  <form id="user-edit-form" name="userEditForm" ng-submit="submit()" role="form">
+
+    <div class="form-group" ng-messages="userEditForm.name.$error">
+      <label for="userName">Name</label>&nbsp;
+      <span ng-message="required" class="label label-danger">Required</span>
+      <span ng-message="minlength" class="label label-danger">Must be at least 2 characters</span>
+      <span ng-message="pattern" class="label label-danger">Must be alphanumeric</span>
+      <input type="text" id="userName" name="name" placeholder="Name" ng-model="user.name" required="required" ng-minlength="2" ng-pattern="validName" class="form-control"/>
     </div>
 
-    <div class="form-group">
-      <label for="userNickname">Nickname</label>
-      <input type="text" id="userNickname" name="nickname" placeholder="Nickname" ng-model="user.nickname" class="form-control"/>
+    <div class="form-group" ng-messages="userEditForm.nickname.$error">
+      <label for="userNickname">Nickname</label>&nbsp;
+      <span ng-message="minlength" class="label label-danger">Must be at least 2 characters</span>
+      <input type="text" id="userNickname" name="nickname" placeholder="Nickname" ng-model="user.nickname" ng-minlength="2" class="form-control"/>
     </div>
 
     <div class="form-group">

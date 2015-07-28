@@ -71,6 +71,7 @@ angular.module('app',
             url: '/users/{userId:int}/edit',
             templateUrl: 'users/edit.html',
             controller: function ($scope, $state, user) {
+              $scope.validName = /^[a-zA-Z0-9\s]+$/;
               $scope.user = user;
               $scope.submit = function() {
                 $scope.user.save().then(function(res) {
