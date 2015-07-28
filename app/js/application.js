@@ -183,6 +183,7 @@ angular.module('app',
       $authProvider.configure({
         apiUrl: ENV.apiHost,
         validateOnPageLoad: true,
+        passwordResetSuccessUrl: '/password/change',
         authProviderPaths: {
           google_oauth2: '/auth/google_oauth2'
         }
