@@ -1,4 +1,25 @@
 angular.module('app.auth', [])
+  .controller('PasswordResetCtrl', function($scope, $auth, messageModal) {
+      $scope.onRequestPasswordReset = function() {
+        $auth.requestPasswordReset($scope.passwordResetForm)
+          .then(function(res) {
+            messageModal.open({
+              title: 'Voxxel Password Reset Sent',
+              icon: 'fa-lock',
+              message: res.data.message
+            });
+          })
+          .catch(function(res) {
+            //TODO: set message to `res.data.errors[0]`?  the error message is sent in the API response anyways
+            messageModal.open({
+              title: 'Voxxel Password Reset Error!',
+              icon: 'fa-lock',
+              message: 'An error occurred when requesting a password reset.'
+            });
+          });
+      }
+  })
+
   .run(function ($rootScope, $state, messageModal) {
     $rootScope.user = $rootScope.user || {};
     $rootScope.loggedIn = $rootScope.loggedIn || false;
@@ -58,15 +79,6 @@ angular.module('app.auth', [])
       //TODO: provide mechanism to resend activation email
     });
 
-    $rootScope.$on('auth:password-reset-request-success', function (ev, user) {
-      messageModal.open({
-        title: 'Voxxel Password Reset Sent',
-        icon: 'fa-lock',
-        message: 'An email has been sent to ' + message.email + ' with password reset instructions.'
-      });
-      //TODO: move to password reset callback?
-    });
-
     $rootScope.$on('auth:password-reset-confirm-success', function (ev, user) {
       messageModal.open({
         title: 'Voxxel Password Reset',
@@ -79,7 +91,7 @@ angular.module('app.auth', [])
       messageModal.open({
         title: 'Voxxel Password Reset Error!',
         icon: 'fa-warning',
-        message: 'Could not activate your account!' // + reason?
+        message: 'An error occured.' // + reason?
       });
       //TODO: provide mechanism to resend password reset email
     });
