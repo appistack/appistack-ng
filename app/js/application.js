@@ -1,5 +1,6 @@
 angular.module('app',
-    ['ipCookie',
+    ['ngMessages',
+      'ipCookie',
       'ngResource',
       'restangular',
       'ui.bootstrap',

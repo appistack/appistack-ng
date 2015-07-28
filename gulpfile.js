@@ -109,7 +109,7 @@ var vendorJsFiles = [
   "vendor/bower/underscore.string/lib/underscore.string.js",
   "vendor/bower/angular/angular.js",
   "vendor/bower/angular-cookie/angular-cookie.js",
-  "vendor/bower/angular-route/angular-route.js",
+  "vendor/bower/angular-messages/angular-messages.js",
   "vendor/bower/angular-resource/angular-resource.js",
   "vendor/bower/angular-bootstrap/ui-bootstrap-tpls.js",
   "vendor/bower/angular-ui-router/release/angular-ui-router.js",
