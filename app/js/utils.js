@@ -11,7 +11,6 @@ angular.module('app.utils', [])
 
   .service('messageModal', function($modal) {
     this.open = function(modalOpts) {
-
       var modalInstance = $modal.open({
         templateUrl: 'modals/message-modal.html',
         controller: 'MessageModalCtrl',

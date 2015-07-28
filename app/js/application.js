@@ -40,6 +40,22 @@ angular.module('app',
             controller: 'HomeCtrl'
           })
 
+          .state('password-reset', {
+            url: "/password/reset",
+            templateUrl: "auth/password-reset.html",
+            controller: function($scope, $auth) {
+              $scope.onRequestPasswordReset = function() {
+                $auth.requestPasswordReset($scope.passwordResetForm)
+                  .then(function(res) {
+
+                  })
+                  .catch(function(res) {
+
+                  });
+              }
+            }
+          })
+
           .state('users', {
             url: "/users",
             templateUrl: "users/index.html",
