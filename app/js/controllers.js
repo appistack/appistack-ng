@@ -97,18 +97,13 @@ angular.module('app')
     };
   })
 
-  .controller("SignupModalCtrl", function ($scope, $state, $modalInstance, $auth, signup) {
+  .controller("SignupModalCtrl", function ($scope, $modalInstance, $auth, signup) {
     $scope.ok = function () {
       $modalInstance.close(signup);
     };
 
     $scope.cancel = function () {
       $modalInstance.dismiss('cancel');
-    };
-
-    $scope.passwordReset = function () {
-      $modalInstance.dismiss('cancel');
-      $state.go('password-reset')
     };
 
     $scope.authWith = function (provider) {
@@ -122,13 +117,18 @@ angular.module('app')
     };
   })
 
-  .controller("LoginModalCtrl", function ($scope, $modalInstance, $auth, creds) {
+  .controller("LoginModalCtrl", function ($scope, $state, $modalInstance, $auth, creds) {
     $scope.ok = function () {
       $modalInstance.close(creds);
     };
 
     $scope.cancel = function () {
       $modalInstance.dismiss('cancel');
+    };
+
+    $scope.passwordReset = function () {
+      $modalInstance.dismiss('cancel');
+      $state.go('password-reset')
     };
 
     $scope.authWith = function (provider) {
