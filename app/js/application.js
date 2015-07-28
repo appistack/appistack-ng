@@ -43,17 +43,13 @@ angular.module('app',
           .state('password-reset', {
             url: "/password/reset",
             templateUrl: "auth/password-reset.html",
-            controller: function($scope, $auth) {
-              $scope.onRequestPasswordReset = function() {
-                $auth.requestPasswordReset($scope.passwordResetForm)
-                  .then(function(res) {
+            controller: 'PasswordResetCtrl'
+          })
 
-                  })
-                  .catch(function(res) {
-
-                  });
-              }
-            }
+          .state('password-change', {
+            url: "/password/change",
+            templateUrl: "auth/password-change.html",
+            controller: 'PasswordChangeCtrl'
           })
 
           .state('users', {

@@ -20,6 +20,26 @@ angular.module('app.auth', [])
       }
   })
 
+  .controller('PasswordChangeCtrl', function($scope, $auth, messageModal) {
+    $scope.onUpdatePassword = function() {
+      $auth.updatePassword($scope.updatePasswordForm)
+        .then(function(res) {
+          messageModal.open({
+            title: 'Voxxel Password Updated',
+            icon: 'fa-lock',
+            message: 'Password updated successfully.'
+          });
+        })
+        .catch(function(res) {
+          messageModal.open({
+            title: 'Voxxel Password Update Error',
+            icon: 'fa-lock',
+            message: 'There was an error updating your password.'
+          });
+        })
+    }
+  })
+
   .run(function ($rootScope, $state, messageModal) {
     $rootScope.user = $rootScope.user || {};
     $rootScope.loggedIn = $rootScope.loggedIn || false;
