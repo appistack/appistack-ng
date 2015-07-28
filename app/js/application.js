@@ -7,6 +7,7 @@ angular.module('app',
       'ui.router',
       'ng-token-auth',
       'app.auth',
+      'app.utils',
       'ui.gravatar',
       'angulartics',
       'angulartics.google.analytics'])
