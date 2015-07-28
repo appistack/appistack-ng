@@ -20,15 +20,17 @@ angular.module('app.auth', [])
       }
   })
 
-  .controller('PasswordChangeCtrl', function($scope, $auth, messageModal) {
+  .controller('PasswordChangeCtrl', function($scope, $state, $auth, messageModal) {
     $scope.onUpdatePassword = function() {
       $auth.updatePassword($scope.updatePasswordForm)
         .then(function(res) {
+          $scope.updatePasswordAlerts = [];
           messageModal.open({
             title: 'Voxxel Password Updated',
             icon: 'fa-lock',
             message: 'Password updated successfully.'
           });
+          $state.go('home');
         })
         .catch(function(res) {
           if (res.status == 401) {
