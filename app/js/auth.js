@@ -1,5 +1,5 @@
 angular.module('app.auth', [])
-  .controller('PasswordResetCtrl', function($scope, $auth, messageModal) {
+  .controller('PasswordResetCtrl', function($scope, $state, $auth, messageModal) {
       $scope.onRequestPasswordReset = function() {
         $auth.requestPasswordReset($scope.resetPasswordForm)
           .then(function(res) {
@@ -8,6 +8,7 @@ angular.module('app.auth', [])
               icon: 'fa-lock',
               message: res.data.message
             });
+            $state.go('home');
           })
           .catch(function(res) {
             //TODO: set message to `res.data.errors[0]`?  the error message is sent in the API response anyways
