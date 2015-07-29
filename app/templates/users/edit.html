@@ -9,22 +9,26 @@
   </p>
 
   <form id="user-edit-form" name="userEditForm" ng-submit="submit()" role="form">
-    <div class="form-group" ng-messages="userEditForm.name.$error">
-      <label for="userName">Name</label>&nbsp;
-      <span ng-message="required" class="label label-danger">Required</span>
-      <span ng-message="minlength" class="label label-danger">Must be at least 2 characters</span>
-      <span ng-message="pattern" class="label label-danger">Must be alphanumeric</span>
+    <div class="form-group" show-errors>
+      <label for="userName" class="control-label">Name</label>&nbsp;
+      <span ng-messages="userEditForm.name.$error" ng-if="userEditForm.name.$touched">
+        <span ng-message="required" class="label label-danger">Required</span>
+        <span ng-message="minlength" class="label label-danger">Must be at least 2 characters</span>
+        <span ng-message="pattern" class="label label-danger">Must be alphanumeric</span>
+      </span>
       <input type="text" id="userName" name="name" placeholder="Name" ng-model="user.name" required="required" ng-minlength="2" ng-pattern="validName" class="form-control"/>
     </div>
 
-    <div class="form-group" ng-messages="userEditForm.nickname.$error">
-      <label for="userNickname">Nickname</label>&nbsp;
-      <span ng-message="minlength" class="label label-danger">Must be at least 2 characters</span>
+    <div class="form-group" show-errors>
+      <label for="userNickname" class="control-label">Nickname</label>&nbsp;
+      <span ng-messages="userEditForm.nickname.$error" ng-if="userEditForm.nickname.$touched">
+        <span ng-message="minlength" class="label label-danger">Must be at least 2 characters</span>
+      </span>
       <input type="text" id="userNickname" name="nickname" placeholder="Nickname" ng-model="user.nickname" ng-minlength="2" class="form-control"/>
     </div>
 
     <div class="form-group">
-      <button type="button" ng-click="passwordReset()" class="btn btn-link pull-left">Change Password</button>
+      <button type="button" ui-sref="password-change()" class="btn btn-link pull-left">Change Password</button>
       <button type="submit" class="btn btn-default pull-right">
         <i class="fa fa-sign-in fa-lg"></i>&nbsp;&nbsp;Save
       </button>
