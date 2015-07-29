@@ -3,24 +3,35 @@
     <h3><i class="fa fa-sign-in fa-lg"></i>&nbsp;&nbsp;Log In</h3>
   </div>
   <div class="modal-body">
+
     <div class="form-group">
-      <label for="loginEmail">Email or Username</label>
-      <input type="text" id="loginEmail" name="username" placeholder="Email" ng-model="creds.email" required class="form-control"/>
+      <label for="loginEmail" class="control-label sr-only">Email or Username</label>
+      <div class="input-group">
+        <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
+        <input type="text" id="loginEmail" name="username" placeholder="Email" ng-model="creds.email" required class="form-control"/>
+      </div>
     </div>
+
     <div class="form-group">
-      <label for="loginPassword">Password</label>
-      <input type="password" id="loginPassword" name="password" placeholder="Password" ng-model="creds.password" required class="form-control"/>
+      <label for="loginPassword" class="control-label sr-only">Password</label>
+      <div class="input-group">
+        <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+        <input type="password" id="loginPassword" name="password" placeholder="Password" ng-model="creds.password" required class="form-control"/>
+      </div>
     </div>
+
     <div class="checkbox">
-      <label>
+      <label for="loginRemember" class="control-label">
         <input type="checkbox" id="loginRemember" name="remember_me" ng-model="creds.remember_me"/> Remember Me
       </label>
     </div>
+
     <!--<div class="form-group">-->
       <!--<button type="button" ng-click="authWith('google_oauth2')" class="btn btn-danger">-->
         <!--<i class="fa fa-google fa-lg">&nbsp;&nbsp;Sign in with Google</i>-->
       <!--</button>-->
     <!--</div>-->
+
     <div ng-hide="!loginAlerts.length" class="form-group">
       <alert ng-repeat="alert in loginAlerts" type="{{alert.type == 'error' ? 'danger' : alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
     </div>

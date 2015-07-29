@@ -4,26 +4,36 @@
   </div>
   <div class="modal-body">
     <div class="form-group">
-      <label for="signupEmail">Email address</label>
-      <input type="email" id="signupEmail" name="email" placeholder="Email" ng-model="signup.email" required="required" class="form-control"/>
+      <label for="signupEmail" class="control-label sr-only">Email address</label>
+      <div class="input-group">
+        <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
+        <input type="email" id="signupEmail" name="email" placeholder="Email" ng-model="signup.email" required class="form-control"/>
+      </div>
     </div>
+
     <div class="form-group">
-      <label for="signupUsername">Username</label>
-      <input type="text" id="signupUsername" name="username" placeholder="Username" ng-model="signup.username" required="required" class="form-control"/>
+      <label for="signupUsername" class="control-label sr-only">Username</label>
+      <div class="input-group">
+        <span class="input-group-addon"><i class="fa fa-at fa-fw"></i></span>
+        <input type="text" id="signupUsername" name="username" placeholder="Username" ng-model="signup.username" required class="form-control"/>
+      </div>
     </div>
+
     <div class="form-group">
-      <label for="signupPassword">Password</label>
-      <input type="password" id="signupPassword" name="password" placeholder="Password" ng-model="signup.password" required="required" class="form-control"/>
+      <label for="signupPassword" class="control-label sr-only">Password</label>
+      <div class="input-group">
+        <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+        <input type="password" id="signupPassword" name="password" placeholder="Password" ng-model="signup.password" required class="form-control"/>
+        <input type="password" id="signupPasswordConfirm" name="passwordConfirmation" placeholder="Confirm" ng-model="signup.passwordConfirmation" required class="form-control"/>
+      </div>
     </div>
-    <div class="form-group">
-      <label for="signupPasswordConfirm">Confirm</label>
-      <input type="password" id="signupPasswordConfirm" name="passwordConfirmation" placeholder="Confirm" ng-model="signup.passwordConfirmation" required="required" class="form-control"/>
-    </div>
+
     <!--<div class="form-group">-->
       <!--<button type="button" ng-click="authWith('google_oauth2')" class="btn btn-danger">-->
         <!--<i class="fa fa-google fa-lg">&nbsp;&nbsp;Sign in with Google</i>-->
       <!--</button>-->
     <!--</div>-->
+
     <div class="form-group">
       <alert ng-repeat="alert in signupAlerts" type="{{alert.type == 'error' ? 'danger' : alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
     </div>
