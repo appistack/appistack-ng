@@ -1,4 +1,20 @@
 angular.module('app.utils', [])
+  .directive('showErrors', function() {
+    return {
+      restrict: 'A',
+      require: '^form', //require a parent form element
+      link: function(scope, el, attrs, formCtrl) {
+        var inputEl = el[0].querySelector("[name]"); //find the textbox element within the form-group
+        var inputNgEl = angular.element(inputEl); //convert native textbox to an angular element
+        var inputName = inputNgEl.attr('name'); //get the name on the text box, so we know the property to check for on the model
+
+        inputNgEl.bind('blur', function() {
+          el.toggleClass('has-error', formCtrl[inputName].$invalid);
+        })
+      }
+    }
+  })
+
   .controller('MessageModalCtrl', function($scope, $modalInstance, modalOpts) {
     $scope.title = modalOpts.title || 'Voxxel';
     $scope.icon = modalOpts.icon;
