@@ -26,7 +26,6 @@
     "angulartics": "~0.17.0",
     "restangular": "~1.4.0",
     "ng-token-auth": "~0.0.25",
-    "angular-gravatar": "~0.4",
     "d3": "~3.5.5"
   }
 }

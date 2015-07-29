@@ -12,7 +12,7 @@ angular.module('app',
       'angulartics',
       'angulartics.google.analytics'])
 
-    .config(function ($stateProvider, $locationProvider, $urlRouterProvider, gravatarServiceProvider) {
+    .config(function ($stateProvider, $locationProvider, $urlRouterProvider) {
 
       // NOTE: If you're going to use html5 pushstate, you'll need to configure your webserver(s) to route to index.html, except for static assets
       $locationProvider.html5Mode(true);
@@ -159,10 +159,6 @@ angular.module('app',
             controller: 'SpectroSoundsCtrl'
           });
 
-      gravatarServiceProvider.defaults = {
-        size: 100,
-        default: 'retro'
-      };
     })
 
     .constant('ENV', {
