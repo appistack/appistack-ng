@@ -24,6 +24,11 @@ angular.module('app')
             .value();
         };
 
+        model.gravatarUrl = function(options) {
+          options = options || { size: 100 }
+          return this.gravatar_url + "&s=" + options.size;
+        };
+
         return model;
       });
 
