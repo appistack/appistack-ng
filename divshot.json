@@ -1,5 +1,5 @@
 {
-  "name": "voxxel",
+  "name": "appistack",
   "root": "divshot",
   "routes": {
     "/**": "index.html"

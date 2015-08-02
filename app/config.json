@@ -11,10 +11,10 @@
   },
   "development": {
     "ng_mocks": false,
-    "api_url": "api.voxxel.dev:3000"
+    "api_url": "api.appistack.dev:3000"
   },
   "divshot": {
-    "assets_url": "//development.voxxel.divshot.io/",
+    "assets_url": "//development.appistack.divshot.io/",
     "ng_mocks": false,
     "build_folder": "divshot"
   },
@@ -27,8 +27,8 @@
   "production": {
     "ng_mocks": false,
     "api_protocol": "https",
-    "api_url": "voxxel.herokuapp.com",
-    "assets_url": "//vox.xel.io/",
+    "api_url": "appistack.herokuapp.com",
+    "assets_url": "//appistack.com/",
     "build_folder": "divshot",
     "googleAnalytics": {
       "trackingId": "UA-61809088-1",
