@@ -1,4 +1,4 @@
-# Frontend Gulp
+## Appistack Angular
 
 A template for frontend web development with GulpJS, which includes:
 
@@ -7,7 +7,7 @@ A template for frontend web development with GulpJS, which includes:
 - Includes Polymer's core-elements & paper-elements, using vulcanize
 - Error handling that doesn't break `gulp watch`
 - Nice gulp-notify configuration, with different sounds for success & failure
-- Compiles Angular Templates into the $templateCache.
+- Compiles Angular Templates into the $templateCache, which makes your Angular App super snappy.
 
 ## Getting Started
 
@@ -23,34 +23,89 @@ A template for frontend web development with GulpJS, which includes:
 
 Also, note that in config.json, you can set `ng_mocks = false` if you do not want to use the API mocks in `app/mocks.js`.
 
-## Deploying
+## Configuring for Divshot
+
+1. Login to the Divshot Web Interface and create a new app.
+1. Download the Divshot CLI with `npm install -g divshot-cli`.
+1. Login to the Divshot CLI with `divshot login`
+1. Configure Divshot in `divshot.json`.  You only need to change the name to match the app you created.
+1. Configure these settings in `config.json` for your production environment.
+  - Set `api_protocol` to `https` if you're using Heroku.
+  - Set `api_url` to the location of your API on Heroku.
+  - Set `build folder` to match the `root` configured in `divshot.json`.
+  - Set `assets_url` to the root location of your static assets.
+  - Configure `googleAnalytics` if you have set it up for your app.  Otherwise, remove this section.
+  - Ensure `ng_mocks` is set to false, unless you want to use your $httpBackend mocks in production.
+  
+That's it - you're ready to deploy to Divshot!
+
+## Deploying to Divshot
 
 The app is hosted at [development.oscillate.divshot.io](http://development.oscillate.divshot.io).  Divshot is a
 service to host completely static sites.
 
 Deploy with the following:
 
-1) NODE_ENV=divshot gulp
-2) divshot push
+1. `NODE_ENV=divshot gulp` to build app in ./divshot.
+  - `NODE_ENV=production gulp` to build app with production configuration in `config.js`.
+1. `divshot push` to push changes to your Divshot development environment.  
+  - `divshot push production` to push to production.
+  
+## Configuring For Multiple Environments
+
+Configuration for building your app is set in `config.json`.  Default configuration is specified in `common` and
+configurations for each environment will override these defaults.  The `divshot` environment is used to deploy
+to your Divshot development environment.
+
+`api_protocol` - Used to specify http or https for you API.
+
+`api_url` - The name of your web server, used in conjunction with `api_protocol` for the Angular ENV.apiUrl constant.
+
+`assets_url` - The root location for your static assets.
+
+  - If your hosting your static assets through Divshot, then this can just be your root url - E.G. `//appistack.com/`
+  - If you have a more complicated configuration with S3 or host various types of static resources in different locations, then you'll need to replace this with your own implementation.
+
+`app_js` - The relative location of your compiled `app.js`.  Default: `js/app.js`
+
+`app_css` - The relative location of your compiled `app.css`.  Default: `js/app.css`
+ 
+`app_components` - The relative location of your compiled web components.  Used if you're using Polymore components.  Default: `components/build.html`
+
+`build_folder` - The location where gulp should build your webapp when you run `gulp`  
+
+  - `gulp webserver` will serve files from `./dist`
+  - `divshot deploy` is configured in `divshot.json` to upload files compiled in `./divshot`.  
+  - This is so you can push updates to divshot without having to stop gulp. 
+
+`ng_mocks` - Set to true if $httpBackend mocks should be enabled.  
+
+  - When `ng_mocks` is set to true, `app/mocks.js` will be included.  Otherwise, it is completely omitted from `app.js`
+   
+`googleAnalytics` - contains your Google Analytics `trackingId` and `domainName`.  
+
+  - If this section is not included, then the Google Analytics script will be omitted from the build.
 
 ## Running Unit Tests
 
-Not set up yet
+Not yet configured.
 
 ## Running Integration Tests
 
-1) Install Protractor with `npm install -g protractor`
-2) Setup Selenium (you'll need JDK) with `webdriver-manager update`
-3) Start your selenium server `webdriver-manager start`
-4) Run the tests with `protractor spec/conf.js`
-
-TODO: setup gulp-protractor-qa
+1. Enable $httpBackend. Open config.js and ensure `"ng_mocks": true` for the webserver that selenium connects to.
+  - Alternatively, you run your Appistack API server.
+1. Install Protractor with `npm install -g protractor`
+1. Setup Selenium (you'll need JDK) with `webdriver-manager update`
+1. Start your selenium server `webdriver-manager start`
+1. Run the tests with `protractor spec/conf.js`
 
 ## License
 
 [MIT License](http://dcunited001.mit-license.org)
 
 ## References
+
+Articles I found useful in learning Angular/Webaudio/Canvas.
 
 ### Events - broadcasting, emitting and using $rootScope
 
