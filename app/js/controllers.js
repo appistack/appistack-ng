@@ -73,7 +73,6 @@ angular.module('app')
         $auth.submitLogin(creds)
           .then(function (res) {
             $scope.loginAlerts = [];
-            console.log(res);
           })
           .catch(function (res) {
             console.log(res);
