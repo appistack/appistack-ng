@@ -15,7 +15,7 @@
       </a>
     </div>
 
-    <div collapse="navCollapsed" class="collapse navbar-collapse navbar-responsive-collapse">
+    <div collapse="navCollapsed" class="collapse navbar-collapse">
       <ul ng-show="loggedIn" class="nav navbar-nav">
         <li ui-sref-active="active" ng-click="navCollapsed=true"><a ui-sref="home"><i class="fa fa-home fa-lg"></i>&nbsp;&nbsp;Home</a></li>
         <li ui-sref-active="active" ng-click="navCollapsed=true"><a ui-sref="users"><i class="fa fa-users fa-lg"></i>&nbsp;&nbsp;Users</a></li>
@@ -28,13 +28,15 @@
           <i class="fa fa-twitter fa-lg text-primary"></i>&nbsp;Tweet&nbsp;@VoxxelApp</a>
       </ul>
 
-      <div ng-if="loggedIn" class="navbar-right">
-        <div user-profile-widget class="btn-group" id="user-profile-widget"></div>
+      <div ng-if="loggedIn" class="nav navbar-right" id="user-profile-widget">
+        <div user-profile-widget class="btn-group"></div>
       </div>
 
-      <div ng-if="!(loggedIn)" class="navbar-right" id="signup-login-widget">
+      <div ng-if="!(loggedIn)" class="nav navbar-right" id="signup-login-widget">
         <div signup-login-widget class="btn-group"></div>
       </div>
+
     </div>
   </div>
 </nav>
+
