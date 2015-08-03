@@ -8,7 +8,6 @@ angular.module('app',
       'ng-token-auth',
       'app.auth',
       'app.utils',
-      'ui.gravatar',
       'angulartics',
       'angulartics.google.analytics'])
 
