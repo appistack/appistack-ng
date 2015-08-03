@@ -106,9 +106,10 @@ Not yet configured.
 - add carousel showing appistack features
 - API documentation
 - google analytics account
-- use <script> tags for vendor dependencies in production
+- use script tags for vendor dependencies in production
   - continue to concat one app.js file in development?
   - or concat vendor.js and app.js, so sourcemaps still work, but gulp-change can be used
+- ensure polymer is working or remove it
 
 ## License
 
