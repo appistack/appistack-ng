@@ -1,5 +1,7 @@
 ## Appistack Angular
 
+You can check out the template running live on [appistack.com](http://appistack.com).
+
 A template for frontend web development with GulpJS, which includes:
 
 - Tasks for JS/JSHint, Less, Image compression, Web Components
@@ -23,34 +25,57 @@ A template for frontend web development with GulpJS, which includes:
 
 Also, note that in config.json, you can set `ng_mocks = false` if you do not want to use the API mocks in `app/mocks.js`.
 
-## Configuring for Divshot
+## Configuring Divshot
 
-1. Login to the Divshot Web Interface and create a new app.
-1. Download the Divshot CLI with `npm install -g divshot-cli`.
-1. Login to the Divshot CLI with `divshot login`
-1. Configure Divshot in `divshot.json`.  You only need to change the name to match the app you created.
-1. Configure these settings in `config.json` for your production environment.
-  - Set `api_protocol` to `https` if you're using Heroku.
-  - Set `api_url` to the location of your API on Heroku.
-  - Set `build folder` to match the `root` configured in `divshot.json`.
-  - Set `assets_url` to the root location of your static assets.
-  - Configure `googleAnalytics` if you have set it up for your app.  Otherwise, remove this section.
-  - Ensure `ng_mocks` is set to false, unless you want to use your $httpBackend mocks in production.
+#### 1) Create a Divshot Account
+
+Divshot allows you to host static-only websites -- FO FREE! C.O.D. NO MONEY DOWN! It's amazing.
+
+#### 2) Create a New App on Divshot
+
+Login to the Divshot Web Interface and create a new app.
+
+#### 3) Configure DNS
+
+If you've got a domain name ready, you can configure it now.  Under your app in Divshot, click settings.  Enter
+your domain name and click save.
+
+In your DNS Provider, create a CNAME or ALIAS record and point it to `[yourapp].divshot.io`.  That's where
+you're static HTML app will be deployed.
+
+#### 4) Download the Divshot CLI
+
+Install the Divshot CLI with `npm install -g divshot-cli`. You'll need `npm`, but you already knew that, didn't you.
+
+Go ahead and login to the Divshot CLI with `divshot login`.
+
+#### 5) Set Up `divshot.json`
+
+Configure values for settings in `divshot.json`.  You only need to change the name to match the app you created.
+
+#### 6) Set Up `config.json`
+
+Configure these settings in `config.json` for your production environment.
+
+- Set `api_protocol` to `https` if you're using Heroku.
+- Set `api_url` to the location of your API on Heroku.
+- Set `build folder` to match the `root` configured in `divshot.json`.
+- Set `assets_url` to the root location of your static assets.
+- Configure `googleAnalytics` if you have set it up for your app.  Otherwise, remove this section.
+- Ensure `ng_mocks` is set to false, unless you want to use your $httpBackend mocks in production.
   
 That's it - you're ready to deploy to Divshot!
 
 ## Deploying to Divshot
 
-The app is hosted at [development.oscillate.divshot.io](http://development.oscillate.divshot.io).  Divshot is a
-service to host completely static sites.
+#### Build App in `./divshot`
 
-Deploy with the following:
+Run `NODE_ENV=divshot gulp` to build.  Use `NODE_ENV=production gulp` to build app with production configuration in `config.js`.
 
-1. `NODE_ENV=divshot gulp` to build app in ./divshot.
-  - `NODE_ENV=production gulp` to build app with production configuration in `config.js`.
-1. `divshot push` to push changes to your Divshot development environment.  
-  - `divshot push production` to push to production.
-  
+#### Push Your Changes to Divshot
+
+Run `divshot push` to push changes to your Divshot development environment.  Run `divshot push production` to push to production.
+
 ## Configuring For Multiple Environments
 
 Configuration for building your app is set in `config.json`.  Default configuration is specified in `common` and
@@ -82,7 +107,7 @@ to your Divshot development environment.
 
   - When `ng_mocks` is set to true, `app/mocks.js` will be included.  Otherwise, it is completely omitted from `app.js`
    
-`googleAnalytics` - contains your Google Analytics `trackingId` and `domainName`.  
+`googleAnalytics` - contains your `trackingId` and `domainName`.
 
   - If this section is not included, then the Google Analytics script will be omitted from the build.
 
