@@ -27,7 +27,7 @@
   "production": {
     "ng_mocks": false,
     "api_protocol": "https",
-    "api_url": "appistack.herokuapp.com",
+    "api_url": "appistack-rails.herokuapp.com",
     "assets_url": "//appistack.com/",
     "build_folder": "divshot",
     "googleAnalytics": {
