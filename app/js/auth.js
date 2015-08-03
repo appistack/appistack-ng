@@ -1,10 +1,10 @@
 angular.module('app.auth', [])
-  .controller('PasswordResetCtrl', function($scope, $state, $auth, messageModal) {
+  .controller('PasswordResetCtrl', function($scope, $state, $auth, messageModal, ENV) {
       $scope.onRequestPasswordReset = function() {
         $auth.requestPasswordReset($scope.resetPasswordForm)
           .then(function(res) {
             messageModal.open({
-              title: 'Voxxel Password Reset Sent',
+              title: ENV.title + ' Password Reset Sent',
               icon: 'fa-lock',
               message: res.data.message
             });
@@ -13,7 +13,7 @@ angular.module('app.auth', [])
           .catch(function(res) {
             //TODO: set message to `res.data.errors[0]`?  the error message is sent in the API response anyways
             messageModal.open({
-              title: 'Voxxel Password Reset Error!',
+              title: ENV.title + ' Password Reset Error!',
               icon: 'fa-lock',
               message: 'An error occurred when requesting a password reset.'
             });
@@ -21,13 +21,13 @@ angular.module('app.auth', [])
       }
   })
 
-  .controller('PasswordChangeCtrl', function($scope, $state, $auth, messageModal) {
+  .controller('PasswordChangeCtrl', function($scope, $state, $auth, messageModal, ENV) {
     $scope.onUpdatePassword = function() {
       $auth.updatePassword($scope.updatePasswordForm)
         .then(function(res) {
           $scope.updatePasswordAlerts = [];
           messageModal.open({
-            title: 'Voxxel Password Updated',
+            title: ENV.title + ' Password Updated',
             icon: 'fa-lock',
             message: 'Password updated successfully.'
           });
@@ -45,7 +45,7 @@ angular.module('app.auth', [])
           }
 
           messageModal.open({
-            title: 'Voxxel Password Update Error',
+            title: ENV.title + ' Password Update Error',
             icon: 'fa-lock',
             message: 'There was an error updating your password.'
           });
@@ -53,7 +53,7 @@ angular.module('app.auth', [])
     }
   })
 
-  .run(function ($rootScope, $state, messageModal) {
+  .run(function ($rootScope, $state, messageModal, ENV) {
     $rootScope.user = $rootScope.user || {};
     $rootScope.loggedIn = $rootScope.loggedIn || false;
 
@@ -89,7 +89,7 @@ angular.module('app.auth', [])
 
     $rootScope.$on('auth:registration-email-success', function (ev, message) {
       messageModal.open({
-        title: 'Voxxel Account Created!',
+        title: ENV.title + ' Account Created!',
         icon: 'fa-user',
         message: 'A registration email has been sent to ' + message.email + '.  Click the confirmation link activate your account.'
       });
@@ -97,7 +97,7 @@ angular.module('app.auth', [])
 
     $rootScope.$on('auth:email-confirmation-success', function (ev, user) {
       messageModal.open({
-        title: 'Voxxel Account Activated!',
+        title: ENV.title + ' Account Activated!',
         icon: 'fa-user',
         message: 'Your account has been activated.'
       });
@@ -105,7 +105,7 @@ angular.module('app.auth', [])
 
     $rootScope.$on('auth:email-confirmation-error', function (ev, reason) {
       messageModal.open({
-        title: 'Voxxel Account Confirmation Error!',
+        title: ENV.title + ' Account Confirmation Error!',
         icon: 'fa-warning',
         message: 'Could not activate your account!' // + reason
       });
@@ -114,7 +114,7 @@ angular.module('app.auth', [])
 
     $rootScope.$on('auth:password-reset-confirm-success', function (ev, user) {
       messageModal.open({
-        title: 'Voxxel Password Reset',
+        title: ENV.title + ' Password Reset',
         icon: 'fa-lock',
         message: 'Please choose a new password.'
       });
@@ -122,7 +122,7 @@ angular.module('app.auth', [])
 
     $rootScope.$on('auth:password-reset-confirm-error', function (ev, reason) {
       messageModal.open({
-        title: 'Voxxel Password Reset Error!',
+        title: ENV.title + ' Password Reset Error!',
         icon: 'fa-warning',
         message: 'An error occured.' // + reason?
       });

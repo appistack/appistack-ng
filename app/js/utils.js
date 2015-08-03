@@ -15,8 +15,8 @@ angular.module('app.utils', [])
     }
   })
 
-  .controller('MessageModalCtrl', function($scope, $modalInstance, modalOpts) {
-    $scope.title = modalOpts.title || 'Voxxel';
+  .controller('MessageModalCtrl', function($scope, $modalInstance, modalOpts, ENV) {
+    $scope.title = modalOpts.title || ENV.title;
     $scope.icon = modalOpts.icon;
     $scope.message = modalOpts.message;
 
