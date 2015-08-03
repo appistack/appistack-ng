@@ -237,7 +237,7 @@ gulp.task('sounds', function () {
 
 gulp.task('fonts', function () {
   var DEST = buildFolder + '/fonts';
-  return gulp.src(['vendor/bower/fontawesome/fonts/*', 'vendor/bower/bootstrap/fonts/*'])
+  return gulp.src(['vendor/bower/font-awesome/fonts/*', 'vendor/bower/bootstrap/fonts/*'])
       .pipe(plumber({errorHandler: onError}))
       .pipe(changed(DEST))
       .pipe(gulp.dest(DEST))
