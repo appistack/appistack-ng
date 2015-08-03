@@ -161,6 +161,7 @@ angular.module('app',
     })
 
     .constant('ENV', {
+      title: '<%= ustr.titleize(title) %>',
       //TODO: update so host is separate from url
       apiHost: '<%= api_protocol %>://<%= api_url %>',
       apiUrl: '<%= api_protocol %>://<%= api_url %>/api/v1'
