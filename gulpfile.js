@@ -173,8 +173,8 @@ gulp.task('js', function () {
       //finally, process templates
       gulp.src('app/templates/**/*.html')
           .pipe(plumber({errorHandler: onError}))
-          .pipe(templateCache({module: 'app'}))
           .pipe(htmlify())
+          .pipe(templateCache({module: 'app'}))
           .pipe(concat('templates.js'))
           .pipe(wrap('(function(){ <%= contents %> })();')),
 
