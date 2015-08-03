@@ -8,6 +8,7 @@ var gulp = require('gulp'),
     template = require('gulp-template'),
     jshint = require('gulp-jshint'),
     uglify = require('gulp-uglify'),
+    minifyCss = require('gulp-minify-css'),
     imagemin = require('gulp-imagemin'),
     rename = require('gulp-rename'),
     concat = require('gulp-concat'),
@@ -204,7 +205,7 @@ var appCssFiles = [
 ];
 
 gulp.task('less', function () {
-  return gulp.src(vendorCssFiles.concat(appCssFiles))
+  return gulp.src(appCssFiles.concat(vendorCssFiles))
       .pipe(plumber({errorHandler: onError}))
       .pipe(sourcemaps.init())//TODO: fix sourcemaps with multiple sources
       .pipe(less({
