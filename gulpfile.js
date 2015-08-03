@@ -89,7 +89,7 @@ var notifyConf = {
 //merge env config into common config
 var node_env = process.env.NODE_ENV || 'development',
     conf = _.extend(
-        _.pick(pkg, 'title', 'description'),
+        _.pick(pkg, 'title', 'description', 'author'),
         config['common'],
         config[node_env],
         {ustr: _.str, node_env: node_env} // makes underscore.str available in templates
