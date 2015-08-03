@@ -207,13 +207,12 @@ gulp.task('less', function () {
   return gulp.src(vendorCssFiles.concat(appCssFiles))
       .pipe(plumber({errorHandler: onError}))
       .pipe(sourcemaps.init())//TODO: fix sourcemaps with multiple sources
-      .pipe(concat('app.js'))
       .pipe(less({
         paths: [path.join(__dirname, 'less', 'includes')]
       }))
-      .pipe(gulp.dest(buildFolder + '/css'))
-      .pipe(rename({suffix: '.min'}))
+      .pipe(concat('app.css'))
       .pipe(sourcemaps.write())
+      .pipe(gulp.dest(buildFolder + '/css'))
       .pipe(notify(_.extend(notifyConf, {message: 'LESS task complete'})));
 });
 
