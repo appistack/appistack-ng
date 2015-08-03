@@ -99,6 +99,17 @@ Not yet configured.
 1. Start your selenium server `webdriver-manager start`
 1. Run the tests with `protractor spec/conf.js`
 
+## TODO
+
+- config.js options for minification? don't compile source maps in dev either
+  - this will save a ton of time on the JS task (source maps are 95% of js task time)
+- add carousel showing appistack features
+- API documentation
+- google analytics account
+- use <script> tags for vendor dependencies in production
+  - continue to concat one app.js file in development?
+  - or concat vendor.js and app.js, so sourcemaps still work, but gulp-change can be used
+
 ## License
 
 [MIT License](http://dcunited001.mit-license.org)
