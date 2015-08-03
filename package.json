@@ -1,12 +1,12 @@
 {
-  "name": "voxxel",
-  "title": "voxxel",
-  "description": "A Frontend App Template with Polymer and Angular, using GulpJS to manage the asset pipeline.",
+  "name": "appistack",
+  "title": "appistack",
+  "description": "Appistack Angular template",
   "version": "0.0.1",
   "private": true,
   "author": {
     "name": "David Conner",
-    "company": "Voxxel"
+    "company": "Appistack"
   },
   "dependencies": {},
   "scripts": {
