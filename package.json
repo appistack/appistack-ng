@@ -1,8 +1,8 @@
 {
-  "name": "appistack",
+  "name": "appistack_angular",
   "title": "appistack",
   "description": "Appistack Angular template",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "private": true,
   "author": {
     "name": "David Conner",
