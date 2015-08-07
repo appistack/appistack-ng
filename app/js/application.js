@@ -20,7 +20,6 @@ angular.module('app',
       function authRoute($auth, $state, $rootScope) {
         return $auth.validateUser()
           .catch(function(res) {
-            //TODO: also open the login modal
             $state.go('home');
             $rootScope.$emit('navbar:openLoginModal');
           });
