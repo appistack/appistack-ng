@@ -7,6 +7,7 @@
     "app_css": "css/app.css",
     "app_components": "components/build.html",
     "build_folder": "dist",
+    "host": "localhost",
     "ng_mocks": false
   },
   "development": {
@@ -25,6 +26,7 @@
     "api_url": "appistack-rails.herokuapp.com",
     "assets_url": "//appistack.com/",
     "build_folder": "build",
+    "host": "appistack.com",
     "googleAnalytics": {
       "trackingId": "UA-65905903-1",
       "domainName": "auto"
