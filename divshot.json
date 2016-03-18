@@ -1,7 +1,0 @@
-{
-  "name": "appistack",
-  "root": "divshot",
-  "routes": {
-    "/**": "index.html"
-  }
-}
