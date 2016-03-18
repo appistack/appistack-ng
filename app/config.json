@@ -24,7 +24,7 @@
     "api_protocol": "https",
     "api_url": "appistack-rails.herokuapp.com",
     "assets_url": "//appistack.com/",
-    "build_folder": "divshot",
+    "build_folder": "build",
     "googleAnalytics": {
       "trackingId": "UA-65905903-1",
       "domainName": "auto"
