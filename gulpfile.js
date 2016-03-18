@@ -291,7 +291,7 @@ gulp.task('webserver', function () {
   gulp.src('dist')
       .pipe(webserver({
         //livereload: true,
-        host: node_env['host'],
+        host: conf['host'],
         fallback: 'index.html',
         port: 8000,
         open: true
@@ -299,12 +299,12 @@ gulp.task('webserver', function () {
 });
 
 
-gulp.task('deploy', ['html', 'less', 'js', 'img', 'vulcanize', 'fonts', 'sounds'], function () {
-  if (NODE_ENV == 'production') {
-    var buildFolder = node_env['build_folder'];
-    var host = node_env['host'];
+gulp.task('deploy', ['html', 'less', 'js', 'img', 'fonts', 'sounds'], function () {
+  if (node_env == 'production') {
+    var buildFolder = conf['build_folder'];
+    var host = conf['host'];
 
-    console.log('Deploying to production: ' + domain);
+    console.log('Deploying to production: ' + host);
 
     return surge({
       project: buildFolder,
