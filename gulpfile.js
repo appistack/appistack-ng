@@ -27,7 +27,8 @@ var gulp = require('gulp'),
     changed = require('gulp-changed'),
     ngAnnotate = require('gulp-ng-annotate'),
     wrap = require('gulp-wrap'),
-    del = require('del');
+    del = require('del'),
+    surge = require('gulp-surge');
 
 _.str = require('underscore.string');
 // ========================================================
@@ -296,3 +297,22 @@ gulp.task('webserver', function () {
         open: true
       }));
 });
+
+
+gulp.task('deploy', ['html', 'less', 'js', 'img', 'vulcanize', 'fonts', 'sounds'], function () {
+  if (NODE_ENV == 'production') {
+    var buildFolder = node_env['build_folder'];
+    var host = node_env['host'];
+
+    console.log('Deploying to production: ' + domain);
+
+    return surge({
+      project: buildFolder,
+      domain: host
+    });
+  } else {
+    console.log('Must build and deploy with production environment settings.');
+    return;
+  }
+});
+
