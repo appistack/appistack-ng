@@ -15,7 +15,6 @@ var gulp = require('gulp'),
     notify = require('gulp-notify'),
     cache = require('gulp-cache'),
     sourcemaps = require('gulp-sourcemaps'),
-    vulcanize = require('gulp-vulcanize'),
     webserver = require('gulp-webserver'),
     config = require('./app/config.json'),
     yargs = require('yargs'),
@@ -245,22 +244,6 @@ gulp.task('fonts', function () {
       .pipe(notify(_.extend(notifyConf, {message: 'Fonts task complete'})));
 });
 
-gulp.task('vulcanize', function () {
-  return gulp.src('app/components/build.html')
-      .pipe(plumber({errorHandler: onError}))
-      .pipe(vulcanize({
-        // refer here for options: https://github.com/Polymer/grunt-vulcanize#options
-        dest: buildFolder + '/components',
-        inline: true,
-        csp: true,
-        strip: (node_env === 'production' || node_env === 'staging')
-      }))
-    // TODO: better way to resolve this than to use gulp-replace? open github issue?
-      .pipe(replace('../../vendor/bower/fontawesome/fonts', '../fonts'))
-      .pipe(gulp.dest(buildFolder + '/components'))
-      .pipe(notify(_.extend(notifyConf, {message: 'Vulcanize task complete'})));
-});
-
 // generates sample previews
 // https://github.com/substack/sillyscope/blob/master/index.js
 // fuck it, gonna do everything in the browser
@@ -290,7 +273,7 @@ gulp.task('clean', function (cb) {
 });
 
 gulp.task('default', ['clean'], function () {
-  gulp.start('html', 'less', 'js', 'img', 'vulcanize', 'fonts', 'sounds');
+  gulp.start('html', 'less', 'js', 'img', 'fonts', 'sounds');
 });
 
 gulp.task('watch', function () {
@@ -301,7 +284,6 @@ gulp.task('watch', function () {
   gulp.watch('app/sounds/**/*', ['sounds']);
   gulp.watch('app/img/**/*', ['img']);
   gulp.watch('app/pages/**/*.html', ['html']);
-  gulp.watch('app/components/**/*.html', ['vulcanize']);
 });
 
 gulp.task('webserver', function () {
