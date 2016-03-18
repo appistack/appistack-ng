@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+  <title><%= ustr.titleize(title) %></title>
+  <link rel="stylesheet" type="text/css" href="<%= assets_url + app_css %>" media="all"/>
+  <link rel="icon" type="image/png" href="<%= assets_url %>img/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <base href="/">
+</head>
+<body ng-cloak>
+
+<% if(typeof googleAnalytics != 'undefined') { %>
+  <script> <!-- ganalytics -->
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', '<%= googleAnalytics.trackingId %>', '<%= googleAnalytics.domainName %>');
+    //  Note: The USER_ID value should be a unique, persistent, and non-personally identifiable
+    //    string identifier that represents a user or signed-in account across devices.
+    // TODO: set userId to hashed email upon login with angular
+    //ga(‘set’, ‘&uid’, '<%= googleAnalytics.userId %>'); // Set the user ID using signed-in user_id.
+    //ga('send', 'pageview'); //disabled for angulartics module
+  </script>
+<% } %>
+
+  <header navbar-widget></header>
+
+  <div class="container-fluid" id="main">
+    <div id="view" ui-view></div>
+  </div>
+
+  <div id="footer">
+    <div class="container-fluid">
+      <!-- TODO: site configuration for author -->
+      <p class="text-muted text-center">&copy; <%= new Date().getFullYear() %> <%= author.name %></p>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="<%= assets_url + app_js %>"></script>
+</body>
+</html>

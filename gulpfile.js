@@ -269,6 +269,7 @@ gulp.task('clean', function (cb) {
         buildFolder + '/components',
         buildFolder + '/fonts',
         buildFolder + '/index.html',
+        buildFolder + '/200.html',
         buildFolder + '/templates.js'],
       cb)
 });
@@ -300,6 +301,8 @@ gulp.task('webserver', function () {
 
 
 gulp.task('deploy', ['html', 'less', 'js', 'img', 'fonts', 'sounds'], function () {
+  // 200.html is required for html5 url's and pushstate to work on Surge.sh
+  // TODO: instead of managing a separate 200.html file, copy the index.html to 200.html
   if (node_env == 'production') {
     var buildFolder = conf['build_folder'];
     var host = conf['host'];
@@ -315,4 +318,3 @@ gulp.task('deploy', ['html', 'less', 'js', 'img', 'fonts', 'sounds'], function (
     return;
   }
 });
-
